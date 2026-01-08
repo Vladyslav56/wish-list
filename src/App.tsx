@@ -5,6 +5,9 @@ import { Modal } from './shared/ui/modal/modal'
 import { CheckBox } from './shared/ui/check/check'
 import { Input } from './shared/ui/input/input'
 import { WishCard } from './entities/wish-card/WishCard'
+import { Avatar } from './shared/ui/avatar/avatar'
+import { UserCard } from './entities/user/ui/UserCard'
+import { Pencil, Trash2 } from 'lucide-react'
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -13,7 +16,39 @@ function App() {
   return (
     <>
       <Button onClick={() => setIsModalOpen(true)}>Open Modal</Button>
-      <WishCard type="other" />
+      <WishCard
+        wish={{ id: '1', title: 'Wish Title', price: 100, isPrivate: false }}
+        onClick={() => {}}
+        topSlot={
+          <CheckBox
+            label="Accept Terms"
+            checked={isChecked}
+            onChange={() => setIsChecked(!isChecked)}
+          />
+        }
+        bottomSlot={
+          <div className="flex justify-between">
+            <Button onClick={() => {}}>
+              <Pencil />
+            </Button>
+            <Button onClick={() => {}}>Complete</Button>{' '}
+            <Button onClick={() => {}}>
+              <Trash2 />
+            </Button>
+          </div>
+        }
+      />
+      <Avatar
+        fallback="Sdfdfg"
+        onClick={() => setIsModalOpen(true)}
+        size="md"
+      />
+      <UserCard
+        user={{ id: '1', name: 'John Doe' }}
+        actionSlot={
+          <Button onClick={() => setIsModalOpen(true)}>Follow</Button>
+        }
+      />
       <Modal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
@@ -24,7 +59,12 @@ function App() {
           name="password"
           placeholder="Enter your password"
         />
-        <Input multiline name="password" placeholder="Enter your password" />
+        <Input
+          multiline
+          rows={4}
+          name="password"
+          placeholder="Enter your password"
+        />
         <CheckBox
           label="Accept Terms"
           checked={isChecked}
