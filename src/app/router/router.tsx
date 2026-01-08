@@ -3,14 +3,14 @@ import { createBrowserRouter } from "react-router-dom";
 import { appRouterRoutes } from "./appRouterRoutes";
 import { MainLayout } from "@/widgets/layouts/MainLayout";
 
-// Создаём маршруты с Suspense для каждой ленивой страницы
+// Suspense for each lazy page
 const childrenRoutes = appRouterRoutes.map((route) => {
   const { path, Component } = route;
 
   return {
     path,
     element: (
-      <Suspense fallback={<div>Завантаження сторінки...</div>}>
+      <Suspense fallback={<div>Loading page...</div>}>
         <Component />
       </Suspense>
     ),

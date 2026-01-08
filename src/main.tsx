@@ -11,7 +11,7 @@ import { router } from "./app/router/router";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   // <Provider store={store}>
   /* <AppInit /> */
-  <Suspense fallback={<div>Завантаження...</div>}>
+  <Suspense fallback={<div>Loading...</div>}>
     <RouterProvider router={router} />
   </Suspense>
 );
